@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Places</title>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+	</head>
+	<body>
+		<h1 class="display-1 text-center">Journal</h1>
+		@for (int i = 0; i < @Model.Count; i++)
+		{
+			<ul>
+				<li>@Model[i].CityName</li>
+				<li>Stayed @Model[i].DaysStayed days</li>
+				<li>Journal Entry:</li>
+			</ul>
+			<p>@Model[i].JournalEntry</p>
+		}
+		<a href="/diary/new"><button class="btn btn-primary">Create Entry</button></a>
+		<ul>
+		@using Places.Models;
+		@foreach (string name in Place.GetCityNames())
+		{
+			<li><a href="/diary/@name">@name</a></li>
+		}
+		</ul>
+		<a href="/"><button class="btn btn-primary">Home</button></a>
+	</body>
+</html>
